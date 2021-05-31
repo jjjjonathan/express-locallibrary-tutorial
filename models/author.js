@@ -39,6 +39,16 @@ AuthorSchema.virtual('dates_living').get(function () {
   }
 });
 
+// Virtual for date of birth for form
+AuthorSchema.virtual('dob_form').get(function () {
+  return DateTime.fromJSDate(this.date_of_birth).toFormat('yyyy-LL-dd');
+});
+
+// Virtual for date of death for form
+AuthorSchema.virtual('dod_form').get(function () {
+  return DateTime.fromJSDate(this.date_of_death).toFormat('yyyy-LL-dd');
+});
+
 // Virtual for author's URL
 AuthorSchema.virtual('url').get(function () {
   return '/catalog/author/' + this._id;
